@@ -19,4 +19,5 @@ console.log(notes);
 //to check url
 //console.log(validator.isURL("https://pen.io"));
 const chalk = require('chalk')
-console.log(chalk.green.bgRed.inverse.bold('success'));
+console.log(chalk.yellow.bgRed.inverse.bold('warning'));
+console.log(chalk.blue.bgRed.inverse.bold('warning'));  //inplace of node index.js write nodemon index.js and these changes will occur autimaticall
