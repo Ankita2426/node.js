@@ -10,11 +10,13 @@
 // //console.log(nam);
 // const sum = add(6,8);
 // console.log(sum);
-const validator = require('validator')
+//const validator = require('validator')
 const getnotes = require('./utils.js')
 const notes = getnotes("your notes are here");
 console.log(notes);
-console.log(validator.isEmail("ankita@gmail.com"));
-console.log(validator.isEmail("gmail.com"));//this packsge return true if something is valid and false if something is not valid    
+//console.log(validator.isEmail("ankita@gmail.com"));
+//console.log(validator.isEmail("gmail.com"));//this packsge return true if something is valid and false if something is not valid    
 //to check url
-console.log(validator.isURL("https://pen.io"));
+//console.log(validator.isURL("https://pen.io"));
+const chalk = require('chalk')
+console.log(chalk.green.bgRed.inverse.bold('success'));
