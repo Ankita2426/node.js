@@ -1,14 +1,58 @@
 const chalk = require('chalk')
 const getnotes = require('./utils.js')
-const command = process.argv[2];
-console.log(process.argv);
-if(command === "add"){
-    console.log('adding notes');
-}else if(command === "remove"){
-    console.log("statement is removed");
-}else {
-    console.log("nothing happens");
-}
+const yargs = require('yargs')
+// const command = process.argv[2];
+//console.log(process.argv);
+//customize yargs version
+yargs.version('1.1.0');
+
+
+//add, remove, read, list
+
+//create add command
+yargs.command({
+    command : "add",
+    describe: "add a new note",
+    handler: function(){
+        console.log("adding a new note");
+    }
+})
+//create remove command
+yargs.command({
+    command : "remove",
+    describe: "removing  note",
+    handler: function(){
+        console.log("removing a new note");
+    }
+})
+// read commands
+yargs.command({
+    command : "read",
+    describe: "reading note",
+    handler: function(){
+        console.log("print placeholder");
+    }
+})
+//list commands
+yargs.command({
+    command : "list",
+    describe: "list notes",
+    handler: function(){
+        console.log("new note is listed");
+    }
+})
+
+
+
+
+console.log(yargs.argv);
+// if(command === "add"){
+//     console.log('adding notes');
+// }else if(command === "remove"){
+//     console.log("statement is removed");
+// }else {
+//     console.log("nothing happens");
+// }
 
 
 
