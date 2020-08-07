@@ -109,19 +109,23 @@ const forecast = require('./utils/forecast')
     if(!address){
       console.log("please provide an address!");
     } else{
-      geocode('palampur', (error, data) => {
+   //   geocode('palampur', (error, data) => {
+        geocode('palampur', (error, {latitude,longitude,location}) => {
         if(error){
           return console.log(error);
         }
             // console.log('Error', error)
             // console.log('Data', data)
-            forecast(data.latitude,data.longitude, (error, forecastdata) => {
+          //  forecast(data.latitude,data.longitude, (error, forecastdata) => {
+            
+            forecast(latitude,longitude, (error, forecastdata) => {
               if(error){
                 return console.log(error);
               }
               // console.log('Error', error)
               // console.log('Data', forecastdata)
-              console.log(data.location);
+             // console.log(data.location);
+             console.log(location);
               console.log(forecastdata);
             })
         })
