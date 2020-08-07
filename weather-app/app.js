@@ -3,10 +3,6 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 
-
-
-
-
 // // // const url = "http://api.weatherstack.com/current?access_key=e966ff17ea74b9ab332a581b8117fb0f&query=32.1109,%2076.5363"
 // // //units are also added
 // // //const url = "http://api.weatherstack.com/current?access_key=e966ff17ea74b9ab332a581b8117fb0f&query=32.1109,%2076.5363&units=f"
@@ -83,7 +79,58 @@ const forecast = require('./utils/forecast')
 //    - Coordinate error, pass string for error
 //    - Success, pass forecast string for data (same format as from before)
 
-forecast(32.1109,2076.5363, (error, data) => {
-  console.log('Error', error)
-  console.log('Data', data)
-})
+// forecast(32.1109,2076.5363, (error, data) => {
+//   console.log('Error', error)
+//   console.log('Data', data)
+// })
+
+//call chaining
+// geocode('palampur', (error, data) => {
+//   if(error){
+//     return console.log(error);
+//   }
+//       // console.log('Error', error)
+//       // console.log('Data', data)
+//       forecast(data.latitude,data.longitude, (error, forecastdata) => {
+//         if(error){
+//           return console.log(error);
+//         }
+//         // console.log('Error', error)
+//         // console.log('Data', forecastdata)
+//         console.log(data.location);
+//         console.log(forecastdata);
+//       })
+//   })
+  //main thing left is user need to provide location without needing to modify source code
+  // so we want palampur as a commant line argument
+
+  
+    const address = process.argv[2]
+    if(!address){
+      console.log("please provide an address!");
+    } else{
+      geocode('palampur', (error, data) => {
+        if(error){
+          return console.log(error);
+        }
+            // console.log('Error', error)
+            // console.log('Data', data)
+            forecast(data.latitude,data.longitude, (error, forecastdata) => {
+              if(error){
+                return console.log(error);
+              }
+              // console.log('Error', error)
+              // console.log('Data', forecastdata)
+              console.log(data.location);
+              console.log(forecastdata);
+            })
+        })
+      
+    }
+    //console.log(process.argv)
+
+
+
+
+  
+  
