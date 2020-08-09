@@ -8,9 +8,36 @@ const path = require('path')
 
 console.log(__dirname);
 //console.log(__filename);
+
 const app = express()
 const publicDirectoryPath = path.join(__dirname, "../public")
+
+app.set('view engine' , 'hbs')
+
 app.use(express.static(publicDirectoryPath))
+
+app.get('' , (req,res) => {
+    res.render('index' , {
+        title: "weather-app",
+        name:  "Ankita"
+    })
+})
+
+
+app.get('/about' , (req,res) => {
+    res.render('about' , {
+        title: "about me",
+        name:  "Ankita"
+    })
+})
+
+
+app.get('/weather' , (req,res) => {
+    res.render('weather' , {
+        title: "today is rainy",
+        name:  "Ankita"
+    })
+})
 
 
 // app.get('' , (req,res) => {
