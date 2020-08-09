@@ -33,9 +33,9 @@ app.get('' , (req,res) => {
 //json
 app.get('/help' , (req,res) => {
     res.send({
-        name: "Dev",
-        age: 21,
-        height: 175,
+        name: "Ankita",
+        age: 19,
+        height: 163,
         good_qualities: "calm",
         bad: "doesn't understand",
 
