@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const hbs = require('hbs')
 
 console.log(__dirname);
 //console.log(__filename);
@@ -7,11 +8,13 @@ console.log(__dirname);
 const app = express()
 //define paths for express config
 const publicDirectoryPath = path.join(__dirname, "../public")
-const viewsPath = path.join(__dirname , "../template")
+const viewsPath = path.join(__dirname , "../template/views")
+const partialsPath = path.join(__dirname , "../template/partials")
 
 //setup handlebars engine and view location
 app.set('view engine' , 'hbs')
 app.set('views' , viewsPath)
+hbs.registerPartials(partialsPath)
 
 //setup static directory to serve
 app.use(express.static(publicDirectoryPath))
@@ -60,6 +63,7 @@ app.get('' , (req,res) => {
 //json
 app.get('/help' , (req,res) => {
     res.send({
+        title:  "help",
         name: "Ankita",
         age: 19,
         height: 163,
