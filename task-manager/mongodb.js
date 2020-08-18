@@ -12,15 +12,57 @@ const id =  new ObjectID()
 // console.log(id);
 //console.log(id.getTimestamp());
 //console.log(id.id);
-console.log(id.id.length);
-console.log(id.toHexString().length);
+//console.log(id.id.length);
+//console.log(id.toHexString().length);
 
 MongoClient.connect(connectionURL , { useUnifiedTopology : true } , (error , client ) =>{
     if(error){
         return console.log('unable to connect to database!');
     }
   //  console.log('connected correctly!');
-    // const db = client.db(databaseName)
+    const db = client.db(databaseName)
+    
+    //FINDONE
+// //SEARCH BY NAME AND AGE
+
+//     // db.collection('users').findOne({ name: "Ankita" , age: 19}, (error ,user) => {
+//         //SEARCH BY ID
+
+//         db.collection('users').findOne({ _id: new ObjectID("5f3b8da5086556455c3d9abd")}, (error ,user) => { 
+//         // db.collection('users').findOne({ _id: "5f3b8da5086556455c3d9abd"}, (error ,user) => {//it will return null because its not string its a binary data we need to give objectId
+//         if(error){
+//             console.log("unable to fetch")
+//         }
+//         console.log(user);
+//     })
+
+//FIND
+//by searching with id it wound be nonsense because id is unique
+    db.collection('users').find({age: 19}).toArray((error , users) =>{
+        console.log(users);
+    })
+
+    db.collection('users').find({age: 19}).count((error , users) =>{
+        console.log(users);
+    })
+
+
+
+//challenge
+            //findone
+    db.collection('Tasks').findOne({ _id: new ObjectID("5f3b8f4287730f279c0c57da")} , (error , user) =>{
+        console.log(user);
+    })
+
+    //find
+    db.collection('Tasks').find({completed: "False"}).toArray((error,userss) =>{
+        console.log(userss);
+    })
+
+
+})
+
+
 
     //     db.collection('users').insertOne({
     //     _id: id,
@@ -79,4 +121,3 @@ MongoClient.connect(connectionURL , { useUnifiedTopology : true } , (error , cli
 //     }
 //     console.log(result.ops);
 //     })
-})
