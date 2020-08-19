@@ -21,38 +21,27 @@ MongoClient.connect(connectionURL , { useUnifiedTopology : true } , (error , cli
     }
   //  console.log('connected correctly!');
     const db = client.db(databaseName)
-    //  //UPDATE USE FILTER
 
-    //  const updatePromise = db.collection('users').updateOne({
-    //      _id: new ObjectID("5f3b8da5086556455c3d9abd")
-    //  }, {
-    //     //  $set: {
-    //     //      name: "Hardeep"
-    //     //  }
-    //     $inc:{
-    //         age: 2
-    //     }
-    //  })
-    //  updatePromise.then((result) =>{
-    //      console.log(result);
-    //  }).catch((error)=> {
+    ////DELETE
+    // db.collection('users').deleteMany({
+    //     age:21
+    // }).then((result) =>{
+    //     console.log(result);
+    // }).catch((error) =>{
     //     console.log(error);
-    //  })
+    // })
 
-    //challenge (under task)   update many
+    //challenge //remove one of those description
 
-    db.collection("Tasks").updateMany({
-        completed: "False"
-    } ,{
-        $set:{
-            completed: "True"
-        }
+    db.collection('Tasks').deleteOne({
+        Description: "Cpp"
     }).then((result) =>{
-         console.log(result.modifiedCount);
-     }).catch((error)=> {
+        console.log(result);
+    }).catch((error) =>{
         console.log(error);
-     })
+    })
 
+  
 })
 
             //create
@@ -153,4 +142,37 @@ MongoClient.connect(connectionURL , { useUnifiedTopology : true } , (error , cli
 // db.collection('Tasks').find({completed: "False"}).toArray((error,userss) =>{
 //     console.log(userss);
 // })
+
+
+  //  //UPDATE USE FILTER
+
+    //  const updatePromise = db.collection('users').updateOne({
+    //      _id: new ObjectID("5f3b8da5086556455c3d9abd")
+    //  }, {
+    //     //  $set: {
+    //     //      name: "Hardeep"
+    //     //  }
+    //     $inc:{
+    //         age: 2
+    //     }
+    //  })
+    //  updatePromise.then((result) =>{
+    //      console.log(result);
+    //  }).catch((error)=> {
+    //     console.log(error);
+    //  })
+
+    // //challenge (under task)   update many
+
+    // db.collection("Tasks").updateMany({
+    //     completed: "False"
+    // } ,{
+    //     $set:{
+    //         completed: "True"
+    //     }
+    // }).then((result) =>{
+    //      console.log(result.modifiedCount);
+    //  }).catch((error)=> {
+    //     console.log(error);
+    //  })
 
